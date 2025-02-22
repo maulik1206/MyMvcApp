@@ -1,0 +1,32 @@
+22-02-2025 14:59:33 - Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Object -> IEnumerable`1
+System.Object -> System.Collections.Generic.IEnumerable`1[[MyMvcApp.Application.DTOs.UserDTO, MyMvcApp.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+22-02-2025 15:13:55 - Incorrect number of arguments supplied for call to method 'Boolean Equals(System.String, System.String, System.StringComparison)'
+22-02-2025 15:14:22 - Incorrect number of arguments supplied for call to method 'Boolean Equals(System.String, System.String, System.StringComparison)'
+22-02-2025 15:14:42 - Incorrect number of arguments supplied for call to method 'Boolean Equals(System.String, System.String, System.StringComparison)'
+22-02-2025 16:11:54 - The file "~/Views/Account/Login.cshtml" cannot be requested directly because it calls the "RenderSection" method.
+22-02-2025 16:24:25 - Expected "}".
+
+22-02-2025 16:24:28 - Expected "}".
+
+22-02-2025 16:24:29 - Expected "}".
+
+22-02-2025 16:24:29 - Expected "}".
+
+22-02-2025 17:52:13 - The required anti-forgery cookie "__RequestVerificationToken" is not present.
+22-02-2025 17:53:03 - The required anti-forgery cookie "__RequestVerificationToken" is not present.
+22-02-2025 17:53:13 - The required anti-forgery cookie "__RequestVerificationToken" is not present.
+22-02-2025 17:54:01 - The required anti-forgery cookie "__RequestVerificationToken" is not present.
+22-02-2025 17:56:46 - The required anti-forgery cookie "__RequestVerificationToken" is not present.
+22-02-2025 18:00:00 - The required anti-forgery cookie "__RequestVerificationToken" is not present.
+22-02-2025 18:00:16 - The required anti-forgery cookie "__RequestVerificationToken" is not present.
+22-02-2025 18:00:25 - The required anti-forgery cookie "__RequestVerificationToken" is not present.
+22-02-2025 18:17:02 - E:\Maulik\Projects\MyMvcApp\MyMvcApp\MyMvcApp.Web\Views\Account\Login.cshtml(59): error CS0103: The name 'keyframes' does not exist in the current context
+22-02-2025 18:17:03 - E:\Maulik\Projects\MyMvcApp\MyMvcApp\MyMvcApp.Web\Views\Account\Login.cshtml(59): error CS0103: The name 'keyframes' does not exist in the current context
+22-02-2025 18:17:05 - E:\Maulik\Projects\MyMvcApp\MyMvcApp\MyMvcApp.Web\Views\Account\Login.cshtml(59): error CS0103: The name 'keyframes' does not exist in the current context
+22-02-2025 18:17:08 - E:\Maulik\Projects\MyMvcApp\MyMvcApp\MyMvcApp.Web\Views\Account\Login.cshtml(59): error CS0103: The name 'keyframes' does not exist in the current context
+22-02-2025 18:17:09 - E:\Maulik\Projects\MyMvcApp\MyMvcApp\MyMvcApp.Web\Views\Account\Login.cshtml(59): error CS0103: The name 'keyframes' does not exist in the current context
+22-02-2025 18:17:10 - E:\Maulik\Projects\MyMvcApp\MyMvcApp\MyMvcApp.Web\Views\Account\Login.cshtml(59): error CS0103: The name 'keyframes' does not exist in the current context
+22-02-2025 18:37:54 - User already exist.

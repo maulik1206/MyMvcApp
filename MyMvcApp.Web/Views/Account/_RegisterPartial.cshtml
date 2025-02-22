@@ -1,0 +1,76 @@
+﻿@model MyMvcApp.Web.Models.RegisterViewModel
+
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerModalLabel">Register</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "registerForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div id="registerMessage" class="mb-2"></div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ConfirmPassword)
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button id="btn-sub" type="submit" class="btn btn-outline-info mt-2 text-center">Register</button>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#registerForm").submit(function (e) {
+            e.preventDefault();
+            $("#btn-sub").html('Loading...');
+            $("#btn-sub").attr("disabled", true);
+            $.ajax({
+                url: '@Url.Action("Register", "Account")',
+                type: 'POST',
+                data: $(this).serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        $("#btn-sub").html('Register');
+                        $("#btn-sub").attr("disabled", false);
+                        $("#registerMessage").html('<div class="alert alert-success">Registration successful! Please log in.</div>');
+                        $("#registerForm")[0].reset();
+                        setTimeout(() => $("#registerModal").modal('hide'), 2000);
+                        setTimeout(() => $("#registerMessage").html(''), 3000);
+                    } else {
+                        $("#btn-sub").html('Register');
+                        $("#btn-sub").attr("disabled", false);
+                        $("#registerMessage").html('<div class="alert alert-danger">' + response.message + '</div>');
+                    }
+                },
+                error: function () {
+                    $("#btn-sub").html('Register');
+                    $("#btn-sub").attr("disabled", false);
+                    $("#registerMessage").html('<div class="alert alert-danger">An error occurred. Please try again.</div>');
+                }
+            });
+        });
+    });
+</script>

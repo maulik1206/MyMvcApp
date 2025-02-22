@@ -1,0 +1,95 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login - MyMVCApps</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #0062E6, #33AEFF);
+        }
+
+        .login-container {
+            margin-top: 10%;
+            max-width: 400px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-login {
+            background-color: #0062E6;
+            color: white;
+        }
+
+            .btn-login:hover {
+                background-color: #0050c4;
+            }
+    </style>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center">
+        <div class="login-container">
+            <h3 class="login-header">User Login</h3>
+            @using (Html.BeginForm("", "", FormMethod.Post, new { id = "loginForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <div id="responseMessage" class="mb-2"></div>
+
+                <div class="mb-3">
+                    @Html.Label("email", "Email", new { @class = "form-label" })
+                    @Html.TextBox("email", "", new { @class = "form-control", type = "email", placeholder = "Enter email", required = "required" })
+                </div>
+                <div class="mb-3">
+                    @Html.Label("password", "Password", new { @class = "form-label" })
+                    @Html.Password("password", "", new { @class = "form-control", placeholder = "Enter password", required = "required" })
+                </div>
+                <button type="submit" class="btn btn-outline-info w-100">Login</button>
+            }
+            <button class="btn btn-outline-warning w-100 mt-2" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Html.Partial("_RegisterPartial")
+
+    <script>
+        $(document).ready(function () {
+            $("#loginForm").submit(function (event) {
+                event.preventDefault(); // Prevent normal form submission
+
+                $.ajax({
+                    url: "@Url.Action("Login", "Account")", // Ensure this matches your controller
+                    type: "POST",
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = response.redirectUrl; // Redirect after success
+                        } else {
+                            $("#responseMessage").html('<div class="alert alert-danger">' + response.message + '</div>');
+                        }
+                    },
+                    error: function () {
+                        $("#responseMessage").html('<div class="alert alert-danger">An error occurred. Please try again.</div>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
